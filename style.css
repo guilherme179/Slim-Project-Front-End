@@ -1,0 +1,35 @@
+main{
+    background-color: #ecf0f5;
+    height: 860px;
+}
+
+#content{
+    background-color: #fff;
+    padding: 10px;
+}
+
+#header-estoque{
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+.title h1{
+    font-size: 24px;
+}
+
+.title{
+    padding-top: 15px;
+}
+
+.linha-horizontal{
+    border: 2px solid #0d6efd;
+}
+
+.main-footer{
+    padding: 15px;
+    box-shadow: inset 0px 15px 0px -14px rgba(12, 10, 10, 0.2); 
+}
+
+.main-footer a{
+    text-decoration: none;
+}
