@@ -126,9 +126,9 @@
             <div class="table-responsive">
                 <div id="header-buttons" class="d-flex justify-content-end align-Clientes-center pt-3 pb-2">
                     <div id="header-clientes" class="justify-content-between ">
-                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#cadastrar_cliente"> Cadastrar </button>
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editClienteModal"> Editar </button>
-                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#apagar_cliente"> Apagar </button>
+                        <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#cadastrarCliente"> Cadastrar </button>
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarCliente"> Editar </button>
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#apagarCliente"> Apagar </button>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -145,7 +145,7 @@
                 </table>
             </div>
 
-        <div class="modal fade" id="cadastrar_cliente" tabindex="-1" aria-labelledby="cadastrar_clientesLabel" aria-hidden="true">
+        <div class="modal fade" id="cadastrarCliente" tabindex="-1" aria-labelledby="cadastrar_clientesLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -184,7 +184,7 @@
             </div>
         </div>
 
-        <div class="modal fade" id="editClienteModal" tabindex="-1" aria-labelledby="editClienteModalLabel" aria-hidden="true">
+        <div class="modal fade" id="editarCliente" tabindex="-1" aria-labelledby="editClienteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -194,7 +194,6 @@
                     <div class="modal-body">
                         <span id="msgAlertErroEdit"></span>
                         <form method="PUT" id="form-edit-cliente" action="localhost/slim-project/clientes">
-                            <input type="hidden" name="id" id="editId">
                             <div class="row mb-3">
                                 <label for="id" class="col-sm-3 col-form-label">Id</label>
                                 <div class="col-sm">
@@ -245,7 +244,7 @@
                             <div class="row mb-3">
                                 <label for="id" class="col-sm-3 col-form-label">Id</label>
                                 <div class="col-sm">
-                                    <input type="text" name="id" class="form-control" id="editId" placeholder="Id do cliente..">
+                                    <input type="text" name="id" class="form-control" id="deleteId" placeholder="Id do cliente..">
                                 </div>
                             </div>
 
