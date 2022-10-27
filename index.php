@@ -139,6 +139,7 @@
                         <tr>
                             <th style="text-align:center">Código</th>
                             <th style="text-align:center">Cliente</th>
+                            <th style="text-align:center">Email</th>
                             <th style="text-align:center">Contato</th>
                         </tr>
                     </thead>

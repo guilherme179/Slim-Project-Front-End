@@ -14,6 +14,7 @@ xmlhttp.onreadystatechange = function(){
         "columns": [
             { "data": "id" },
             { "data": "nome" },
+            { "data": "email" },
             { "data": "telefone" },
         ]
     });
