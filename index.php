@@ -127,6 +127,7 @@
                 <div id="header-buttons" class="d-flex justify-content-end align-Clientes-center pt-3 pb-2">
                     <div id="header-clientes" class="justify-content-between ">
                         <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#cadastrarCliente"> Cadastrar </button>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#visualizarCliente"> Visualizar </button>
                         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editarCliente"> Editar </button>
                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#apagarCliente"> Apagar </button>
                     </div>
@@ -139,8 +140,9 @@
                         <tr>
                             <th style="text-align:center">Código</th>
                             <th style="text-align:center">Cliente</th>
-                            <th style="text-align:center">Email</th>
+                            <th style="text-align:center">Cnpj</th>
                             <th style="text-align:center">Contato</th>
+                            <th style="text-align:center">Preço</th>
                         </tr>
                     </thead>
                 </table>
@@ -156,8 +158,8 @@
                     <div class="modal-body">
                         <span id="msgAlertErroCad"></span>
                         <form method="POST" id="form-cad-cliente">
-                            <div class="row mb-3">
-                                <label for="nome" class="col-sm-3 col-form-label">Cliente</label>
+                        <div class="row mb-3">
+                            <label for="nome" class="col-sm-3 col-form-label">Cliente</label>
                                 <div class="col-sm">
                                     <input type="text" name="nome" class="form-control" id="nome" placeholder="Nome do cliente..">
                                 </div>
@@ -169,6 +171,55 @@
                                     <input type="text" name="telefone" class="form-control" id="telefone" placeholder="Telefone do cliente.." data-mask="(00) 000000000">
                                 </div>
                             </div>
+                                                
+                            <div class="row mb-3">
+                                <label for="cep" class="col-sm-3 col-form-label">Cep</label>
+                                <div class="col-sm">
+                                    <input type="text" name="cep" class="form-control" id="cep" placeholder="Cep do fornecedor.." maxlength="10" data-mask="00000-000">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="rua" class="col-sm-3 col-form-label">Rua</label>
+                                <div class="col-sm">
+                                    <input type="text" name="rua" class="form-control" id="rua" placeholder="Rua do fornecedor..">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="numeroIMO" class="col-sm-3 col-form-label">Número</label>
+                                <div class="col-sm">
+                                    <input type="text" name="numeroIMO" class="form-control" id="numeroIMO" placeholder="Número do fornecedor..">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="bairro" class="col-sm-3 col-form-label">Bairro</label>
+                                <div class="col-sm">
+                                    <input type="text" name="bairro" class="form-control" id="bairro" placeholder="Bairro do fornecedor..">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="cidade" class="col-sm-3 col-form-label">Cidade</label>
+                                <div class="col-sm">
+                                    <input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade do fornecedor..">
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <label for="uf" class="col-sm-3 col-form-label">Estado</label>
+                                <div class="col-sm">
+                                    <input type="text" name="uf" class="form-control" id="uf" placeholder="Estado do fornecedor..">
+                                </div>
+                            </div>
+                            
+                            <div class="row mb-3">
+                                <label for="cnpj" class="col-sm-3 col-form-label">Cnpj</label>
+                                <div class="col-sm">
+                                    <input type="text" name="cnpj" class="form-control" id="cnpj" placeholder="Cnpj do cliente.." maxlength="18"  data-mask="00.000.000/0000-00">
+                                </div>
+                            </div>
                             
                             <div class="row mb-3">
                                 <label for="email" class="col-sm-3 col-form-label">E-mail</label>
@@ -176,6 +227,14 @@
                                     <input type="text" name="email" class="form-control" id="email" placeholder="E-mail do cliente..">
                                 </div>
                             </div>
+                            
+                            <div class="row mb-3">
+                                <label for="preco" class="col-sm-3 col-form-label">Preço</label>
+                                <div class="col-sm">
+                                    <input type="text" name="preco" class="form-control" id="preco" placeholder="Preço do cliente.." data-mask="000000000,00" data-mask-reverse="true">
+                                </div>
+                            </div>
+                            
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-success btn-sm" value="cadastrar">Cadastrar</button>
                             </div>
@@ -198,7 +257,9 @@
                             <div class="row mb-3">
                                 <label for="id" class="col-sm-3 col-form-label">Id</label>
                                 <div class="col-sm">
-                                    <input type="text" name="id" class="form-control" id="editId" placeholder="Id do cliente..">
+                                    <select name="id" id="editId" class="form-select">
+                                        <option value=""> </option>
+                                    </select>
                                 </div>
                             </div>
                             
@@ -219,7 +280,7 @@
                             <div class="row mb-3">
                                 <label for="email" class="col-sm-3 col-form-label">E-mail</label>
                                 <div class="col-sm">
-                                    <input type="text" name="email" class="form-control" id="editEmail" placeholder="E-mail do cliente..">
+                                    <input type="email" name="email" class="form-control" id="editEmail" placeholder="E-mail do cliente..">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -230,6 +291,87 @@
                 </div>
             </div>
         </div>
+       
+        <div class="modal fade" id="visualizarCliente" tabindex="-1" aria-labelledby="editClienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editClienteModalLabel">Visualizar Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <span id="msgAlertErroEdit"></span>
+                        <form method="DELETE" id="form-vis-cliente">
+                            <input type="hidden" name="id" id="editId">
+
+                            <div class="row mb-3">
+                                <label for="id" class="col-sm-3 col-form-label">Nome</label>
+                                <div class="col-sm">
+                                    <select name="id" id="visId" class="form-select">
+                                        <option value=""> </option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#visClienteModal">Buscar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="visClienteModal" tabindex="-1" aria-labelledby="visClienteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="visClienteModalLabel">Visualizar Cliente</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <dl class="row">
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Código</dt>
+                            <dd style="padding: 15px; font-size: 17px; text-transform: capitalize;" class="col-sm-8"><span id="visCod"></span></dd>
+
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Cliente</dt>
+                            <dd style="padding: 15px; font-size: 17px; text-transform: capitalize;" class="col-sm-8"><span id="visCliente"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Cep</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visCep"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Rua</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visRua"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Número</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visNum"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Bairro</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visBairro"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Cidade</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visCidade"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Estado</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visEstado"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Cnpj</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visCnpj"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Preço</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visPreco"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">Telefone</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visTelefone"></span></dd>
+                            
+                            <dt style="padding: 15px; font-size: 17px;" class="col-sm-4">E-mail</dt>
+                            <dd style="padding: 15px; font-size: 17px;" class="col-sm-8"><span id="visEmail"></span></dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+        </div>
+
        
         <div class="modal fade" id="apagarCliente" tabindex="-1" aria-labelledby="editClienteModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -242,10 +384,13 @@
                         <span id="msgAlertErroEdit"></span>
                         <form method="DELETE" id="form-delete-cliente">
                             <input type="hidden" name="id" id="editId">
+                            
                             <div class="row mb-3">
-                                <label for="id" class="col-sm-3 col-form-label">Id</label>
+                                <label for="id" class="col-sm-3 col-form-label">Nome</label>
                                 <div class="col-sm">
-                                    <input type="text" name="id" class="form-control" id="deleteId" placeholder="Id do cliente..">
+                                    <select name="id" id="deleteId" class="form-select">
+                                        <option value=""> </option>
+                                    </select>
                                 </div>
                             </div>
 
@@ -264,6 +409,7 @@
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="jquery.mask.js"></script>
     <script src="index.js"></script>
 
 <footer class="main-footer">
