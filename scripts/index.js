@@ -10,24 +10,41 @@ xmlhttp.send();
 
 // console.log(sessao);
 xmlhttp.onreadystatechange = function(){
-  if(this.readyState == 4 && this.status == 200){
-    var data = JSON.parse(this.responseText);
-   // console.log(data);
-    $('#listar-clientes').DataTable({
-        "data": data,
-        "language": {
-            "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json"
-        },
-        "columns": [
-            { "data": "id" },
-            { "data": "nome" },
-            { "data": "cnpj" },
-            { "data": "telefone" },
-            {"data": "precoVisual"}
-        ],
-    });
+    if(this.readyState == 4 && this.status == 200){
+        var data = JSON.parse(this.responseText);
+        // console.log(data);
+        $('#listar-clientes').DataTable({
+            "data": data,
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/1.11.5/i18n/pt-BR.json"
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "nome" },
+                { "data": "cnpj" },
+                { "data": "telefone" },
+                {"data": "precoVisual"}
+            ],
+        });
+    }
 }
+
+var token = sessionStorage.getItem('token');
+
+function parseJwt (token) {
+    var base64Url = token.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    
+    return JSON.parse(jsonPayload);
 }
+
+var decoded = parseJwt(token);
+document.getElementById("usuario").innerHTML = decoded.name;
+document.getElementById("usuario2").innerHTML = decoded.name;
+// console.log(decoded);
 
 $(document).ready(function() {
 

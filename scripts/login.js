@@ -1,6 +1,6 @@
 const http = axios.create({
     baseURL: 'http://localhost:8016/'
-})
+});
 
 const formLogin = document.querySelector("#login");
 formLogin.addEventListener("submit", async function(e) {
